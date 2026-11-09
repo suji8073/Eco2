@@ -3300,6 +3300,7 @@ __metadata:
     gh-pages: "npm:^6.3.0"
     globals: "npm:^16.4.0"
     husky: "npm:^9.1.7"
+    kakao.maps.d.ts: "npm:^0.1.40"
     lucide-react: "npm:^0.554.0"
     path: "npm:^0.12.7"
     postcss: "npm:^8.5.6"
@@ -5163,7 +5164,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kakao.maps.d.ts@npm:^0.1.39":
+"kakao.maps.d.ts@npm:^0.1.39, kakao.maps.d.ts@npm:^0.1.40":
   version: 0.1.40
   resolution: "kakao.maps.d.ts@npm:0.1.40"
   checksum: 10c0/16eef0d9846311921ae3c5c020a8769ab8d1f894b2a6f1aef869a83648462982c2891bc8ea174665345290483bf73feb6ae264273cee38a40a1adbb17aa6862f
