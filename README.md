@@ -23,10 +23,13 @@
 ---
 ### 🔗 Links
 
-[![배포 사이트](https://img.shields.io/badge/🌐_배포_사이트-4A90E2?style=for-the-badge)](https://frontend.dev.growbin.app/)
+[![데모 사이트](https://img.shields.io/badge/🌐_데모_사이트-4A90E2?style=for-the-badge)](https://eco2-app.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub_Organization-181717?style=for-the-badge&logo=github)](https://github.com/orgs/eco2-team/repositories)
 [![Figma](https://img.shields.io/badge/Figma_Prototype-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/proto/peoqcemIsMwIURd9HQMpsN/%EC%9D%B4%EC%BD%94%EC%97%90%EC%BD%94?page-id=1%3A2&node-id=225-73&viewport=1360%2C318%2C0.65&t=V5mtKkrt8rZLeS2N-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=225%3A73)
 
+
+> ℹ️ 백엔드 서비스 운영이 종료되어(2026.03), 현재는 **프론트엔드 데모 모드**로 배포되어 있습니다.  
+> 로그인 없이 바로 이용할 수 있으며, AI 분석·채팅·지도 데이터는 예시 응답으로 동작합니다.
 
 ---
 <br/><br/>
@@ -222,7 +225,9 @@ cd frontend
 yarn install
 
 # 3️⃣ 환경 변수 설정 (.env 파일 생성)
-VITE_KAKAO_APP_KEY=your_kakao_app_key
+VITE_KAKAO_MAP_API_KEY=your_kakao_javascript_key
+VITE_API_BASE_URL=https://your-api-server   # 데모 모드에서는 불필요
+VITE_DEMO_MODE=true                          # 백엔드 없이 mock 응답으로 실행
 
 # 4️⃣ 개발 서버 실행
 yarn dev
@@ -243,6 +248,18 @@ yarn deploy
 | `yarn lint`    | ESLint 실행        |
 | `yarn preview` | 빌드 결과 미리보기 |
 | `yarn deploy`  | GitHub Pages 배포  |
+
+### 🧪 데모 모드
+
+백엔드 없이 화면을 확인할 수 있도록 `VITE_DEMO_MODE=true`일 때 모든 API 요청을 [`src/api/mock/demoAdapter.ts`](src/api/mock/demoAdapter.ts)의 mock 응답으로 처리합니다.
+
+- **로그인**: 소셜 로그인 버튼 클릭 시 바로 홈으로 이동
+- **AI 스캐너**: 촬영 시 페트병 → 종이 → 유리병 → 캔 순서로 예시 결과와 캐릭터 보상 제공
+- **캐릭터 / 닉네임**: 브라우저 localStorage에 저장
+- **지도**: 현재 위치 주변의 예시 거점 표시 (카카오 JavaScript 키에 배포 도메인 등록 필요)
+- **채팅**: 예시 답변 제공
+
+Vercel 배포 시 프로젝트 환경 변수에 `VITE_DEMO_MODE=true`, `VITE_KAKAO_MAP_API_KEY`를 설정합니다.
 
 <br />
 
