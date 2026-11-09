@@ -1,3 +1,4 @@
+import { IS_DEMO_MODE } from '@/api/mock/demoAdapter';
 import { useRef, useState } from 'react';
 import cameraIcon from '@/assets/icons/icon_camera.svg';
 import SendActiveIcon from '@/assets/icons/icon_send_active.svg';
@@ -54,7 +55,10 @@ const ChatInputBar = ({
           headers: { 'Content-Type': imageFile.type },
         });
 
-        cdnUrl = presignedData.cdn_url;
+        // 데모 모드에서는 업로드가 없으므로 로컬 미리보기 URL 사용
+        cdnUrl = IS_DEMO_MODE
+          ? URL.createObjectURL(imageFile)
+          : presignedData.cdn_url;
       }
 
       // 로컬 메시지 상태 업데이트

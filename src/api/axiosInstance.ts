@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { IS_DEMO_MODE, demoAdapter } from '@/api/mock/demoAdapter';
 
 // 메인 axios instance
 const api = axios.create({
@@ -11,6 +12,13 @@ export const refreshApi = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true,
 });
+
+// 데모 모드: 백엔드 대신 가짜 응답 사용 (S3 업로드용 기본 axios 포함)
+if (IS_DEMO_MODE) {
+  axios.defaults.adapter = demoAdapter;
+  api.defaults.adapter = demoAdapter;
+  refreshApi.defaults.adapter = demoAdapter;
+}
 
 // 응답 인터셉터
 api.interceptors.response.use(
